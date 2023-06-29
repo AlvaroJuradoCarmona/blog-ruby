@@ -1,0 +1,85 @@
+@import "./actiontext.css";
+
+.main_bar_link {
+    margin: auto;
+    max-width: 951px;
+    float: left;
+    display: block;
+    padding: 14px 60px;
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 800px) {
+    .main_bar_link {
+        float: none;
+    }
+    .button_link {
+        float:none;
+    }
+    .button_link_color {
+        display:none;
+    }
+}
+
+.main_bar_link:hover {
+    background-color: #E8DEF8;
+    color:black;
+}
+
+.button_link_color{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    position: relative;
+    float: right;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 134px;
+    height: 40px;
+    
+    background: #6750A4;
+    border-radius: 100px;
+    color: white;
+}
+
+.button_link {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    float: right;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 134px;
+    height: 40px;
+
+    border: 1px solid #79747E;
+    border-radius: 100px;
+    color: black;
+}
+
+.button_link_color:hover {
+    text-decoration:none;
+    color:white;
+}
+
+.button_link_color:link {
+    text-decoration:none;
+}
+
+.button_link:hover {
+    background-color: #E8DEF8;
+    color:black;
+}
+
+.button_link:link {
+    text-decoration:none;
+}

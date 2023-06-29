@@ -1,0 +1,24 @@
+<div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+      <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <%= form_with(model: @comment, url: post_comments_path(@comment.post), class: "contents", data: {reflex: "submit->Comment#new_comment", post_id: @comment.post.id, current_user_id: @comment.user.id}) do |form| %>
+                <div class="my-5 own-editor">
+                    <%= form.label :description %>
+                    <%= rich_text_area_tag "comment[description]", @comment.description , class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+                </div>
+
+                <div class="inline">
+                    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+                </div>
+
+                <%= button_tag 'Cancel', type: "button", class: "text-center rounded-lg py-3 px-5 bg-rose-600 text-white inline-block font-medium",
+                data: {reflex: "click->Comment#cancel_new_comment"} %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

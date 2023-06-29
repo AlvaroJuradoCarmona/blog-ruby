@@ -1,0 +1,24 @@
+    <div class = "flex justify-between items-center">
+      <div class = "flex justify-between items-center w-6/12">
+        <div class="text-xl">
+          <%= category.name%>
+        </div>
+        <div>
+          Posts:
+          <%= category.posts.size %>
+        </div>
+      </div>
+      <% if current_user&.admin? %>
+        <div class= "flex gap-3">
+          <%= button_tag 'Edit', type: "button", class: "text-center rounded-lg py-3 px-5 bg-purple-500 text-white font-medium",
+          data: { reflex: "click->Category#show_edit_category", category_id: category.id} %>
+          <%= button_tag 'Delete', type: "button", class: "text-center rounded-lg py-3 px-5 bg-red-600 text-white font-medium",
+          data: { reflex: "click->Category#delete_category", category_id: category.id} %>
+        </div>
+      <% end %>
+    </div>
+    <div id="edit_category"></div>
+  <hr class="my-6">
+
+
+

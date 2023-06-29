@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.1);
+    color: black;
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media screen and (min-width: 760px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media screen and (min-width: 570px) {
+    .container {
+        max-width: 540px;
+    }
+}

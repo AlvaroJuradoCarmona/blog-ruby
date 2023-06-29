@@ -1,0 +1,25 @@
+  <p class="my-5">
+    <% user = comment.user %>
+    <% if user.profile.avatar.attached? %>
+				<%= link_to image_tag(user.profile.avatar, class: "h-10 w-auto rounded-xl"), profile_path(user.profile), class: "block py-1.5 margin-auto float-left mr-3" %>
+		<% else %>
+				<%= link_to image_tag("profile-default", class: "h-10 w-auto rounded-xl"), profile_path(user.profile), class: "block py-1.5 margin-auto float-left mr-3" %>
+		<% end %>
+    <%= comment.user.profile.username %>
+    <br>
+    <%= comment.created_at.strftime("%d/%m/%Y %H:%M") %>
+  </p>
+  
+  <p class="my-5">
+    <%= comment.description %>
+  </p>
+
+  <div class="flex gap-3">
+    <%= button_tag 'Edit comment', type: "button", class: "text-center rounded-lg py-3 px-5 inline-block bg-gray-100 font-medium",
+    data: { reflex: "click->Comment#show_edit_comment", comment_id: comment.id} if can? :edit, comment %>
+    <%= button_tag 'Delete comment', type: "button", class: "mt-2 rounded-lg py-3 px-5 bg-red-600 text-white font-medium", 
+    data: { reflex: "click->Comment#delete_comment", comment_id: comment.id } if can? :destroy, comment %>  
+  </div>
+  <hr class="mt-6">
+
+<div id="edit_comment"></div>

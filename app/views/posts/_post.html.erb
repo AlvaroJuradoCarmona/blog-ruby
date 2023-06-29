@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "post.css", "data-turbo-track": "reload" %>
+
+<div id="<%= dom_id post %>">
+  <article class= "flex">
+    <div class= "w-2/3 break-words">
+      
+      <p class="mb-5 text-2xl font-bold mr-3">
+        <%= link_to post.title, post %>
+      </p>
+
+      <p class="my-5">
+        <%= post.article %>
+      </p>
+      <p class = "text-red-600 mt-2"> <%= link_to "SEE MORE...", post %></p>
+      <% user = post.user %>
+      <br>
+      <p>
+        <% user = post.user %>
+        <% if user.profile.avatar.attached? %>
+					<%= link_to image_tag(user.profile.avatar, class: "h-10 w-auto rounded-xl"), profile_path(user.profile), class: "float-left mr-3" %>
+				<% else %>
+					<%= link_to image_tag("profile-default", class: "h-10 w-auto rounded-xl"), profile_path(user.profile), class: "float-left mr-3" %>
+				<% end %>
+        <%= link_to user.profile.username, profile_path(user.profile), class: "hover:text-purple-700" %>
+        <br>
+        <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
+      </p>
+    </div>
+
+    <div class= "w-1/3">
+      <%= link_to (image_tag post.photo), post %>
+    </div>
+  </article>
+  <hr class="my-6">
+</div>

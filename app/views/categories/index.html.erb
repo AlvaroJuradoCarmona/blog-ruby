@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag "category.css", "data-turbo-track": "reload" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center pb-10">
+    <h1 class="font-bold text-4xl">Categories</h1>
+    <% if current_user&.admin? %>
+      <%= button_tag 'New category', type: "button", class: "text-center rounded-lg py-3 px-5 bg-purple-500 text-white font-medium",
+      data: { reflex: "click->Category#show_new_category"} %>
+    <% end %>
+  </div>
+
+  <div id="new_category"></div>
+
+  <% @categories.each do |category| %>
+    <div id="<%= dom_id category %>">
+      <%= render partial: 'category', locals: { category: category } %>
+    </div>
+  <% end %>
+</div>

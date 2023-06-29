@@ -1,0 +1,18 @@
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    color: black;
+}
+
+.trix-content {
+    margin-top: 30px;
+    text-align: justify;
+    word-break: break-all;
+}
+
+.own-editor {
+    word-break: break-all;
+}

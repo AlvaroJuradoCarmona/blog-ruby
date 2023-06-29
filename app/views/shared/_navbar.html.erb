@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "application.css", "data-turbo-track": "reload" %>
+
+<nav class="mb-5">
+	<ul class="text-center overflow-hidden">
+    	<a href="/" class="max-w-4xl flex justify-center md:float-left">
+			<%= image_tag("bloglogo.png", size: "80", alt: "Logo") %>
+		</a>
+		<%= link_to "Home", posts_path, class: "main_bar_link" %>
+		<%= link_to "Categories", categories_path, class: "main_bar_link" %>
+
+      	<% if user_signed_in? %>
+			<div class="flex justify-center text-center md:justify-end">
+				<div class="flex justify-center">
+					<%= link_to current_user.profile.username, profile_path(current_user.profile), class: "py-3.5 float-right hover:text-purple-700 mr-3" %>
+					<% if current_user.profile.avatar.attached? %>
+						<%= link_to image_tag(current_user.profile.avatar, class: "h-10 w-auto rounded-xl"), profile_path(current_user.profile), class: "py-2 mr-3" %>
+					<% else %>
+						<%= link_to image_tag("profile-default", class: "h-10 w-auto rounded-xl"), profile_path(current_user.profile), class: "py-2 mr-3" %>
+					<% end %>
+				</div>			
+				<div>
+					<%= button_to "Logout", destroy_user_session_path, method: :delete, class: "button_link_color" %>
+				</div>
+			</div>
+		<% else %>
+      		<%= link_to "Sign Up", new_user_registration_path, class: "button_link_color" %>
+      		<%= link_to "Sign In", new_user_session_path, class: "button_link" %>
+    	<% end %>
+  	</ul>
+</nav>

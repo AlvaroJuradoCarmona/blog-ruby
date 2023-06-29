@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "post.css", "data-turbo-track": "reload" %>
+
+<div id="categories", class="flex justify-center items-center">
+  <%= button_tag "All", type: "button", class: "hover:text-purple-700 p-3 #{@category&.id == nil ? 'text-purple-700 font-bold' : ''}",
+  data: { reflex: "click->Category#show_category", category_id: nil} %>
+  <%= render partial: "category", collection: @categories %>
+</div>
+
+<div>
+  <% if @posts.count > 0 %>
+    <%== pagy_info(@pagy) %>
+  <% end %>
+  
+  <% if user_signed_in? %>
+    <%= link_to 'New post', new_post_path, class: "button_link" %>
+  <% else %>
+    <%= link_to 'New post', new_user_session_path, class: "button_link" %>
+  <% end %>
+</div>
+<br><br>
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div id="posts" class="min-w-full">
+    <%= render @posts %>
+  </div>
+
+  <div class="flex">
+    <% if @posts.count > 0 %>
+        <div class="my-5 m-auto">
+          <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+        </div>
+    <% else %>
+      <h2 class="font-bold text-2xl">No post in this category :(</h2>
+    <% end %>
+  </div>
+</div>

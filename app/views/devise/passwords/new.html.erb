@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag "authentication.css", "data-turbo-track": "reload" %>
+
+<div class = "flex">
+  <div class = "m-auto">
+    <a href="/">
+          <%= image_tag("bloglogo.png", size: "200", alt: "Logo") %>
+    </a>
+  </div>
+</div>
+
+<h2 class="text-center font-bold text-3xl mt-5">Forgot your password?</h2>
+<br>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"border-0 border-b-2 mt-1.5 mb-5 w-full", placeholder: "steve@gmail.com" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Reset Password", class: "block bg-purple-500 text-white font-bold text-xl w-full my-4 py-4 rounded-full border-solid border-transparent shadow cursor-pointer" %>
+  </div>
+<% end %>
+<br>
+

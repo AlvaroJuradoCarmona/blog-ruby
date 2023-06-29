@@ -1,0 +1,6 @@
+<div id="<%= dom_id category %>">
+    <div class="text-center p-3">
+      <%= button_tag category.name, type: "button", class: "hover:text-purple-700 #{@category&.id == category.id ? 'text-purple-700 font-bold' : ''}",
+      data: { reflex: "click->Category#show_category", category_id: category.id} %>
+    </div>
+</div>

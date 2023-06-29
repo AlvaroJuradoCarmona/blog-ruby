@@ -1,0 +1,52 @@
+<%= stylesheet_link_tag "authentication.css", "data-turbo-track": "reload" %>
+
+<div class = "flex">
+  <div class = "m-auto">
+    <a href="/">
+          <%= image_tag("bloglogo.png", size: "200", alt: "Logo") %>
+    </a>
+  </div>
+</div>
+
+<h1 class="text-center font-bold text-3xl mt-5">Sign up</h1>
+<br>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"border-0 border-b-2 mt-1.5 mb-5 w-full", placeholder: "steve@gmail.com" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class:"border-0 border-b-2 mt-1.5 mb-5 w-full", placeholder: "password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"border-0 border-b-2 mt-1.5 mb-5 w-full", placeholder: "password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "block bg-purple-500 text-white font-bold text-xl w-full my-4 py-4 rounded-full border-solid border-transparent shadow cursor-pointer" %>
+  </div>
+<% end %>
+<br><br>
+<div class="flex">
+  <div class="m-auto">
+    <p>Do you have an account?</p>
+  </div>
+</div>
+<div class="flex">
+  <div class="m-auto">
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "SIGN IN", new_session_path(resource_name), class: "text-purple-500" %><br />
+    <% end %>
+  </div>
+</div>
+<br>
